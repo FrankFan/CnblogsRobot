@@ -32,7 +32,8 @@ namespace CnblogsRobot
             string username = txtUserName.Text.Trim();
             string password = txtPwd.Text.Trim();
 
-
+            Login.LoginCnblogs(username, password);
+            
         }
 
         

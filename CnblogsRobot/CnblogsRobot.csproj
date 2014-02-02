@@ -50,6 +50,9 @@
     <Compile Include="fmLogin.Designer.cs">
       <DependentUpon>fmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="HttpHeader.cs" />
+    <Compile Include="HttpHelper.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fmLogin.resx">
