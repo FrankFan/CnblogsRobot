@@ -9,40 +9,17 @@ using System.Windows.Forms;
 
 namespace CnblogsRobot
 {
-    /*
-     * 功能点
-     * 1. 模拟登录
-     *    - Login.cs 登录逻辑代码
-     *    
-     * 2. 上传图片，获取外链图片url
-     *    - ImageUploader.cs 上传图片逻辑代码
-     *    
-     * 3. 发闪存客户端（可以发送，可以获取）
-     *    - shan.cs  闪存逻辑代码
-     */
-    public partial class fmLogin : Form
+    public partial class fmIng : Form
     {
-        public fmLogin()
+        public fmIng()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void fmIng_Load(object sender, EventArgs e)
         {
-            string username = txtUserName.Text.Trim();
-            string password = txtPwd.Text.Trim();
-
-            string html = Login.LoginCnblogs(username, password);
-
-            if (html.IndexOf("<title>首页 - 我的园子 - 博客园</title>") >= 0)
-            {
-                MessageBox.Show("登陆成功", this.Text);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("登陆失败", this.Text);
-            }
+            fmLogin fl = new fmLogin();
+            fl.ShowDialog();
         }
 
         protected override void WndProc(ref Message m)
@@ -70,7 +47,5 @@ namespace CnblogsRobot
                     break;
             }
         }
-
-
     }
 }
