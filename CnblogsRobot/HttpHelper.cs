@@ -132,8 +132,8 @@ namespace CnblogsRobot
 
                 //提交请求
                 Stream requestStream = request.GetRequestStream();
-                requestStream.Write(postDataByte, 0, postDataByte.Length - 1);
-                //requestStream.Close();
+                requestStream.Write(postDataByte, 0, postDataByte.Length);
+                requestStream.Close();
 
                 //接收响应
                 response = (HttpWebResponse)request.GetResponse();
@@ -149,6 +149,54 @@ namespace CnblogsRobot
                 throw ex;
             }
             return cc;
+        }
+
+        public static string GetHtml(string url, CookieContainer cc, HttpHeader header)
+        {
+            string html = string.Empty;
+            HttpWebRequest request = null;
+            HttpWebResponse response = null;
+            StreamReader streamReader = null;
+            Stream responseStream = null;
+
+            try
+            {
+                request = (HttpWebRequest)WebRequest.Create(url);
+                request.CookieContainer = cc;
+                request.ContentType = header.ContentType;
+                request.ServicePoint.ConnectionLimit = header.MaxTry;
+                request.Referer = url;
+                request.Accept = header.Accept;
+                request.UserAgent = header.UserAgent;
+                request.Method = "GET";
+
+                //发起请求，得到Response
+                response = (HttpWebResponse)request.GetResponse();
+                responseStream = response.GetResponseStream();
+                streamReader = new StreamReader(responseStream, Encoding.UTF8);
+                html = streamReader.ReadToEnd();
+
+                
+            }
+            catch (Exception ex)
+            {
+                if (request != null)
+                    request.Abort();
+                if (response != null)
+                    response.Close();
+                return string.Empty;
+            }
+            finally
+            {
+                //关闭各种资源
+                streamReader.Close();
+                responseStream.Close();
+                request.Abort();
+                response.Close();
+            }
+
+
+            return html;
         }
 
     }

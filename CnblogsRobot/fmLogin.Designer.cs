@@ -64,14 +64,15 @@
             // 
             this.txtPwd.Location = new System.Drawing.Point(127, 90);
             this.txtPwd.Name = "txtPwd";
+            this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(155, 21);
-            this.txtPwd.TabIndex = 1;
+            this.txtPwd.TabIndex = 2;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(127, 148);
+            this.btnLogin.Location = new System.Drawing.Point(127, 140);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(78, 35);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "登录";
             this.btnLogin.UseVisualStyleBackColor = true;

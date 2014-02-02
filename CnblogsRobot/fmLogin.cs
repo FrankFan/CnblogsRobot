@@ -19,7 +19,7 @@ namespace CnblogsRobot
      *    
      * 3. 发闪存客户端（可以发送，可以获取）
      *    - shan.cs  闪存逻辑代码
-     */ 
+     */
     public partial class fmLogin : Form
     {
         public fmLogin()
@@ -32,10 +32,11 @@ namespace CnblogsRobot
             string username = txtUserName.Text.Trim();
             string password = txtPwd.Text.Trim();
 
-            Login.LoginCnblogs(username, password);
-            
+            string html = Login.LoginCnblogs(username, password);
+
+            MessageBox.Show(html);
         }
 
-        
+
     }
 }
