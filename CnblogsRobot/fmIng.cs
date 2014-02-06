@@ -18,8 +18,24 @@ namespace CnblogsRobot
 
         private void fmIng_Load(object sender, EventArgs e)
         {
-            fmLogin fl = new fmLogin();
-            fl.ShowDialog();
+            //登录
+            fmLogin login = new fmLogin();
+            login.ShowDialog();
+
+            //获取主页的html
+            string html = login.homeHtml;
+
+            //获取头像url
+
+            //获取最近一条说说
+
+            //获取园龄
+
+            //获取粉丝数
+
+            //获取星星
+
+
         }
 
         protected override void WndProc(ref Message m)

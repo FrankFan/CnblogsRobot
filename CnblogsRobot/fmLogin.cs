@@ -22,6 +22,8 @@ namespace CnblogsRobot
      */
     public partial class fmLogin : Form
     {
+        public string homeHtml = string.Empty;
+
         public fmLogin()
         {
             InitializeComponent();
@@ -32,9 +34,9 @@ namespace CnblogsRobot
             string username = txtUserName.Text.Trim();
             string password = txtPwd.Text.Trim();
 
-            string html = Login.LoginCnblogs(username, password);
+            homeHtml = Login.LoginCnblogs(username, password);
 
-            if (html.IndexOf("<title>首页 - 我的园子 - 博客园</title>") >= 0)
+            if (homeHtml.IndexOf("<title>首页 - 我的园子 - 博客园</title>") >= 0)
             {
                 MessageBox.Show("登陆成功", this.Text);
                 this.Close();
