@@ -151,6 +151,13 @@ namespace CnblogsRobot
             return cc;
         }
 
+        /// <summary>
+        /// Get方式获携带cookie获取页面html
+        /// </summary>
+        /// <param name="url">请求的url</param>
+        /// <param name="cc">cookie</param>
+        /// <param name="header">请求Header对象</param>
+        /// <returns>页面源代码html</returns>
         public static string GetHtml(string url, CookieContainer cc, HttpHeader header)
         {
             string html = string.Empty;
@@ -176,7 +183,7 @@ namespace CnblogsRobot
                 streamReader = new StreamReader(responseStream, Encoding.UTF8);
                 html = streamReader.ReadToEnd();
 
-                
+
             }
             catch (Exception ex)
             {
