@@ -42,8 +42,9 @@ namespace CnblogsRobot
 
             if (homeHtml.IndexOf("<title>首页 - 我的园子 - 博客园</title>") >= 0)
             {
-                MessageBox.Show("登陆成功", this.Text);
-                this.Close();
+                //MessageBox.Show("登陆成功", this.Text);
+                //this.Close();
+                this.Visible = false;
             }
             else
             {
@@ -51,31 +52,31 @@ namespace CnblogsRobot
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case 0x0112:
-                    if (((int)m.WParam) == 61536)
-                    {
-                        DialogResult result = MessageBox.Show("确定退出系统吗?", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //protected override void WndProc(ref Message m)
+        //{
+        //    switch (m.Msg)
+        //    {
+        //        case 0x0112:
+        //            if (((int)m.WParam) == 61536)
+        //            {
+        //                DialogResult result = MessageBox.Show("确定退出系统吗?", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-                        if (result == DialogResult.OK)
-                        {
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            base.WndProc(ref m);
-                        }
-                    }
-                    break;
+        //                if (result == DialogResult.OK)
+        //                {
+        //                    Application.Exit();
+        //                }
+        //                else
+        //                {
+        //                    base.WndProc(ref m);
+        //                }
+        //            }
+        //            break;
 
-                default:
-                    base.WndProc(ref m);
-                    break;
-            }
-        }
+        //        default:
+        //            base.WndProc(ref m);
+        //            break;
+        //    }
+        //}
 
 
     }

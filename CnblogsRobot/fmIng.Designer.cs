@@ -42,6 +42,8 @@
             this.lblAge = new System.Windows.Forms.Label();
             this.lblFansCnt = new System.Windows.Forms.Label();
             this.lblStarCnt = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 229);
+            this.label2.Location = new System.Drawing.Point(13, 245);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 7;
@@ -121,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 252);
+            this.label3.Location = new System.Drawing.Point(12, 268);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 7;
@@ -130,7 +132,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 276);
+            this.label4.Location = new System.Drawing.Point(11, 292);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 7;
@@ -139,7 +141,7 @@
             // lblAge
             // 
             this.lblAge.AutoSize = true;
-            this.lblAge.Location = new System.Drawing.Point(52, 228);
+            this.lblAge.Location = new System.Drawing.Point(52, 244);
             this.lblAge.Name = "lblAge";
             this.lblAge.Size = new System.Drawing.Size(0, 12);
             this.lblAge.TabIndex = 8;
@@ -147,7 +149,7 @@
             // lblFansCnt
             // 
             this.lblFansCnt.AutoSize = true;
-            this.lblFansCnt.Location = new System.Drawing.Point(54, 251);
+            this.lblFansCnt.Location = new System.Drawing.Point(54, 267);
             this.lblFansCnt.Name = "lblFansCnt";
             this.lblFansCnt.Size = new System.Drawing.Size(0, 12);
             this.lblFansCnt.TabIndex = 9;
@@ -155,16 +157,35 @@
             // lblStarCnt
             // 
             this.lblStarCnt.AutoSize = true;
-            this.lblStarCnt.Location = new System.Drawing.Point(54, 275);
+            this.lblStarCnt.Location = new System.Drawing.Point(54, 291);
             this.lblStarCnt.Name = "lblStarCnt";
             this.lblStarCnt.Size = new System.Drawing.Size(0, 12);
             this.lblStarCnt.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 222);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "User：";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(54, 221);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(0, 12);
+            this.lblUserName.TabIndex = 12;
             // 
             // fmIng
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 328);
+            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lblStarCnt);
             this.Controls.Add(this.lblFansCnt);
             this.Controls.Add(this.lblAge);
@@ -205,5 +226,7 @@
         private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Label lblFansCnt;
         private System.Windows.Forms.Label lblStarCnt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblUserName;
     }
 }
