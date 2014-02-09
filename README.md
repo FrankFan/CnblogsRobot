@@ -7,3 +7,4 @@ A useful tool for www.cnblogs.com which you can login, send ing (like weibo and 
 * 闪存客户端
 * 图片上传器(获得图片的外链地址)
 * 其他功能
+* 获取登录用户头像，闪存，粉丝数，关注数。
