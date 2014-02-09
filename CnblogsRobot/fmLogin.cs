@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
 
 namespace CnblogsRobot
 {
@@ -23,6 +24,7 @@ namespace CnblogsRobot
     public partial class fmLogin : Form
     {
         public string homeHtml = string.Empty;
+        public CookieContainer cc = new CookieContainer();
 
         public fmLogin()
         {
@@ -35,6 +37,8 @@ namespace CnblogsRobot
             string password = txtPwd.Text.Trim();
 
             homeHtml = Login.LoginCnblogs(username, password);
+
+            cc = Login.cc; 
 
             if (homeHtml.IndexOf("<title>首页 - 我的园子 - 博客园</title>") >= 0)
             {

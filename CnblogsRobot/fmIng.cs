@@ -11,6 +11,7 @@ namespace CnblogsRobot
 {
     public partial class fmIng : Form
     {
+
         public fmIng()
         {
             InitializeComponent();
@@ -25,10 +26,22 @@ namespace CnblogsRobot
             //获取主页的html
             string html = login.homeHtml;
 
+            
             //获取头像url
+            string avatarUrl = "http://home.cnblogs.com/user/CurrentIngUserInfo";
+            string str = HttpHelper.HttpPost(avatarUrl, "", login.cc);
 
+            HttpHeader header = new HttpHeader();
+            header.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+            header.ContentType = "application/x-www-form-urlencoded";
+            header.Method = "POST";
+            header.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36";
+            header.MaxTry = 300;
 
-            //获取最近一条说说
+            //获取最近一条说说,=后面的参数是时间戳
+            string lastIngUrl = "http://home.cnblogs.com/ajax/ing/MyLastIng?_=1391921465936";
+            string lastIngContent = HttpHelper.GetHtml(lastIngUrl, login.cc, header);
+
 
             //获取园龄
 

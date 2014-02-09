@@ -51,7 +51,7 @@ namespace CnblogsRobot
             return html;
         }
 
-        public static string HttpPost(string url, string postedData)
+        public static string HttpPost(string url, string postedData,CookieContainer cc)
         {
             string html = string.Empty;
 
@@ -65,23 +65,13 @@ namespace CnblogsRobot
             request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
 
             //set cookie
-            /*
-            CookieContainer cookieContainer = new CookieContainer();
-            CookieCollection cookieCollection = new CookieCollection();
-            cookieCollection.Add(new Cookie("__utma", "226521935.1116400261.1391317399.1391317399.1391317399.1"));
-            cookieCollection.Add(new Cookie("__utmb", "226521935.1.10.1391317399"));
-            cookieCollection.Add(new Cookie("__utmc", "226521935"));
-            cookieCollection.Add(new Cookie("__utmz", "226521935.1391317399.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"));
-            cookieCollection.Add(new Cookie("__gads", "ID=e7eeb22509836764:T=1391317400:S=ALNI_MYRL_jmoem1ve2v-ZYRukWgbNt0Gg"));
-            cookieContainer.Add(cookieCollection);
-
-            //set cookie 2
-            request.CookieContainer = cookieContainer;
-            */
+            
+            request.CookieContainer = cc;
+            
 
             //get request stream
             Stream responseStream = request.GetRequestStream();
-            //用StreamWriter向流request stream中写入字符，格式是gb2312
+            //用StreamWriter向流request stream中写入字符，格式是UTF8
             StreamWriter myStreamWriter = new StreamWriter(responseStream, Encoding.UTF8);
             myStreamWriter.Write(postedData);
 
@@ -206,5 +196,9 @@ namespace CnblogsRobot
             return html;
         }
 
+        public static string HttpPostByCookie(string url, CookieContainer cc, HttpHeader header)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

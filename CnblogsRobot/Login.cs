@@ -12,6 +12,9 @@ namespace CnblogsRobot
      */
     public class Login
     {
+        //全局变量保存cookie信息
+        public static CookieContainer cc = new CookieContainer();
+
         public static string LoginCnblogs(string userName, string password)
         {
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
@@ -30,7 +33,7 @@ namespace CnblogsRobot
             header.MaxTry = 300;
 
             //获取cookie
-            CookieContainer cc = HttpHelper.GetCookie(loginUrl, postData, header);
+            cc = HttpHelper.GetCookie(loginUrl, postData, header);
 
             //进入个人主页
             string homeUrl = "http://home.cnblogs.com";
