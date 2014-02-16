@@ -29,8 +29,10 @@ namespace CnblogsRobot
 
             //登录
             fmLogin login = new fmLogin();
-            login.ShowDialog();
+            login.ShowDialog(this);
 
+            
+            
             //获取最近一条说说,=后面的参数是时间戳
             string lastIngUrl = "http://home.cnblogs.com/ajax/ing/MyLastIng?_=1391921465936";
             string lastIngContent = HttpHelper.GetHtml(lastIngUrl, login.cc, header);
@@ -38,7 +40,12 @@ namespace CnblogsRobot
             //获取主页的html
             string html = login.homeHtml;
 
+            LoadHtmlData(login, html);
 
+        }
+
+        protected void LoadHtmlData(fmLogin login, string html)
+        {
             //获取头像url
             string avatarUrl = "http://home.cnblogs.com/user/CurrentIngUserInfo";
             string str = HttpHelper.HttpPost(avatarUrl, "", login.cc);
@@ -46,10 +53,13 @@ namespace CnblogsRobot
             JavaScriptSerializer jss = new JavaScriptSerializer();
             UserInfo user = jss.Deserialize<UserInfo>(str);
 
+            MessageBox.Show(user.AvatarUrl);
+
+
             this.pictureBox1.ImageLocation = user.AvatarUrl;
             this.lblUserName.Text = user.UserName;
 
-
+            //<li><a href="(?<url>.*?)" target="_blank">(?<title>.*?)</a></li>
 
 
             //获取园龄
@@ -57,34 +67,32 @@ namespace CnblogsRobot
             //获取粉丝数
 
             //获取星星
-
-
         }
 
-        //protected override void WndProc(ref Message m)
-        //{
-        //    switch (m.Msg)
-        //    {
-        //        case 0x0112:
-        //            if (((int)m.WParam) == 61536)
-        //            {
-        //                DialogResult result = MessageBox.Show("确定退出系统吗?", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 0x0112:
+                    if (((int)m.WParam) == 61536)
+                    {
+                        DialogResult result = MessageBox.Show("确定退出系统吗?", this.Text, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-        //                if (result == DialogResult.OK)
-        //                {
-        //                    Application.Exit();
-        //                }
-        //                else
-        //                {
-        //                    base.WndProc(ref m);
-        //                }
-        //            }
-        //            break;
+                        if (result == DialogResult.OK)
+                        {
+                            Application.Exit();
+                        }
+                        else
+                        {
+                            base.WndProc(ref m);
+                        }
+                    }
+                    break;
 
-        //        default:
-        //            base.WndProc(ref m);
-        //            break;
-        //    }
-        //}
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
+        }
     }
 }

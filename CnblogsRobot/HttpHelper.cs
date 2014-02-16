@@ -54,6 +54,9 @@ namespace CnblogsRobot
         public static string HttpPost(string url, string postedData,CookieContainer cc)
         {
             string html = string.Empty;
+            Stream myResponseStream = null;
+            StreamReader sreamReader = null;
+            StreamWriter myStreamWriter = null;
 
             //create a http web request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -67,29 +70,40 @@ namespace CnblogsRobot
             //set cookie
             
             request.CookieContainer = cc;
-            
 
-            //get request stream
-            Stream responseStream = request.GetRequestStream();
-            //用StreamWriter向流request stream中写入字符，格式是UTF8
-            StreamWriter myStreamWriter = new StreamWriter(responseStream, Encoding.UTF8);
-            myStreamWriter.Write(postedData);
 
-            //get http response
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            //获取服务器的cookie
-            //response.Cookies = cookieContainer.GetCookies(response.ResponseUri);
-            //得到response stream
-            Stream myResponseStream = response.GetResponseStream();
-            //用StreamReader解析response stream
-            StreamReader sreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
-            //将流转化成字符串
-            html = sreamReader.ReadToEnd();
-            //关闭资源
-            myResponseStream.Close();
-            sreamReader.Close();
-            //关闭writer
-            myStreamWriter.Close();
+            try
+            {
+                //get request stream
+                Stream responseStream = request.GetRequestStream();
+                //用StreamWriter向流request stream中写入字符，格式是UTF8
+                myStreamWriter = new StreamWriter(responseStream, Encoding.UTF8);
+                myStreamWriter.Write(postedData);
+
+                //get http response
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                //获取服务器的cookie
+                //response.Cookies = cookieContainer.GetCookies(response.ResponseUri);
+                //得到response stream
+                myResponseStream = response.GetResponseStream();
+                //用StreamReader解析response stream
+                sreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
+                //将流转化成字符串
+                html = sreamReader.ReadToEnd();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                ////关闭资源
+                //myResponseStream.Close();
+                //sreamReader.Close();
+                ////关闭writer
+                //myStreamWriter.Close();
+            }
 
 
             return html;
